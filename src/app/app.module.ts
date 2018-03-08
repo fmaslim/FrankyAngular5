@@ -8,6 +8,7 @@ import { UserListComponent } from './user-list/user-list.component';
 import { RedditComponent } from './reddit/reddit.component';
 
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { ArticleComponent } from './article/article.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     HelloWorldComponent,
     UserItemComponent,
     UserListComponent,
-    RedditComponent
+    RedditComponent,
+    ArticleComponent
 ],
   imports: [
     BrowserModule, ReactiveFormsModule, FormsModule
