@@ -1,0 +1,13 @@
+<form [formGroup]="myForm">
+  <h3 class="ui header">Add a link</h3>
+
+  <div class="field form-group">
+    <label for="title">Title: </label>
+    <input name="title" class="form-control" placeholder="Enter a title" formControlName="title">
+  </div>
+  <div class="field form-group">
+    <label for="link">Link: </label>
+    <input name="link" class="form-control" placeholder="Enter a link" formControlName="link">
+  </div>
+  <button (click)="addArticle(title.value, link.value)" class="btn btn-success">Submit link</button>
+</form>
