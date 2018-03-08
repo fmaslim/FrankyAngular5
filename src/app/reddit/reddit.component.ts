@@ -43,4 +43,12 @@ export class RedditComponent implements OnInit {
   addArticle(myTitle: string, myLink: string) {
     alert(myTitle + ', ' + myLink);
   }
+
+  redditVoteUp(article: Article) {
+    article.voteUp();
+  }
+
+  redditVoteDown(article: Article) {
+    article.voteDown();
+  }
 }
