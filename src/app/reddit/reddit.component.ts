@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import { Article } from '../article/article.component';
 
 @Component({
   selector: 'app-reddit',
@@ -12,7 +13,15 @@ export class RedditComponent implements OnInit {
   title: FormControl;
   link: FormControl;
 
-  constructor() { }
+  articles: Article[];
+
+  constructor() {
+    this.articles = [
+      new Article('http://angular.io', 'Angular 5', 10),
+      new Article('http://react.io', 'ReactJS', 10),
+      new Article('http://vue.io', 'VueJS', 10)
+    ];
+  }
 
   ngOnInit() {
     this.createFormControls();
@@ -32,5 +41,6 @@ export class RedditComponent implements OnInit {
   }
 
   addArticle(myTitle: string, myLink: string) {
+    alert(myTitle + ', ' + myLink);
   }
 }

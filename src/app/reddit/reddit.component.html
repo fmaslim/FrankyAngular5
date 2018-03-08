@@ -11,3 +11,9 @@
   </div>
   <button (click)="addArticle(title.value, link.value)" class="btn btn-success">Submit link</button>
 </form>
+
+<div class="form-group" *ngFor="let article of articles">
+  <app-article [article]="article"
+               (up)="redditVoteUp(article)"
+               (down)="redditVoteDown(article)"></app-article>
+</div>
