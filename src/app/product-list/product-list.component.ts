@@ -41,4 +41,11 @@ export class ProductListComponent implements OnInit {
     this.currentProduct = product;
     this.productSelected.emit(product);
   }
+
+  isSelected(product: Product) {
+    if (!product || !this.currentProduct) {
+      return false;
+    }
+    return product.sku === this.currentProduct.sku;
+  }
 }
