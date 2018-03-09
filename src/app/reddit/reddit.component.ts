@@ -41,14 +41,10 @@ export class RedditComponent implements OnInit {
   }
 
   addArticle(myTitle: string, myLink: string) {
-    alert(myTitle + ', ' + myLink);
+    this.articles.unshift(new Article(myLink, myTitle));
   }
 
-  redditVoteUp(article: Article) {
-    article.voteUp();
-  }
-
-  redditVoteDown(article: Article) {
-    article.voteDown();
+  sortedArticles(): Article[] {
+    return this.articles.sort((a: Article, b: Article) => b.votes - a.votes);
   }
 }

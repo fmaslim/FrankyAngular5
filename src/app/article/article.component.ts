@@ -30,15 +30,11 @@ export class ArticleComponent implements OnInit {
   // This sets the CSS Class of the host of this component
   @HostBinding('attr.class') cssClass = 'row';
   @Input() article: Article;
-  @Output() up: EventEmitter<Article>;
-  @Output() down: EventEmitter<Article>;
 
   constructor() {
   }
 
   ngOnInit() {
-    this.up = new EventEmitter<Article>();
-    this.down = new EventEmitter<Article>();
   }
 
   voteUp() {
@@ -47,8 +43,8 @@ export class ArticleComponent implements OnInit {
     // the article's internal properties directly.
 
     // The problem is that this component knows too much about the internal of the Article class
-    // this.article.votes++;
 
+    // this.article.votes++;
     this.article.voteUp();
     return false;
     // Without "return false", Javascript by default will cause the page to reload, instead of updating the list

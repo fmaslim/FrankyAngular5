@@ -1,0 +1,3 @@
+<div class="container test-border" *ngFor="let product of productList">
+  <app-product [product]="product" (click)="clicked(product)"></app-product>
+</div>

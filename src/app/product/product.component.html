@@ -1,0 +1,9 @@
+<!-- ProductImageComponent goes here -->
+<div class="container">
+  <h1>{{ product.name }}</h1>
+  <div>SKU #: {{ product.sku }}</div>
+  <div>
+    <app-product-department [product]="product"></app-product-department>
+  </div>
+</div>
+<app-price-display [price]="product.price"></app-price-display>

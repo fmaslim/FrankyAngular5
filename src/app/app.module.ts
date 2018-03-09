@@ -9,6 +9,11 @@ import { RedditComponent } from './reddit/reddit.component';
 
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ArticleComponent } from './article/article.component';
+import { ProductComponent } from './product/product.component';
+import { InventoryRootComponent } from './inventory-root/inventory-root.component';
+import { ProductListComponent } from './product-list/product-list.component';
+import { PriceDisplayComponent } from './price-display/price-display.component';
+import { ProductDepartmentComponent } from './product-department/product-department.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +22,12 @@ import { ArticleComponent } from './article/article.component';
     UserItemComponent,
     UserListComponent,
     RedditComponent,
-    ArticleComponent
+    ArticleComponent,
+    ProductComponent,
+    InventoryRootComponent,
+    ProductListComponent,
+    PriceDisplayComponent,
+    ProductDepartmentComponent
 ],
   imports: [
     BrowserModule, ReactiveFormsModule, FormsModule
