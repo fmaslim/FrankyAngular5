@@ -1,0 +1,36 @@
+<!--
+  Remember that whenever we make directives available to our view, they will get attached to any element that matches their selector
+  NgForm does something handy but not obvious: it incldes the form tag in its selector (instead of requiring you to explicitly
+  add ngForm as an attribute).
+
+  What this means is that if you import FormsModule, ngForm will get automatically attached to any <form> tags
+  you have in your view.
+
+  2 important functionalities that ngForm gives us:
+  a. A FormGroup named ngForm
+  b. A (ngSubmit) output
+
+  #f="ngForm" - This says that we want to create a local variable, or an alias, for this view.
+  ngModel - This directive specifies a selector of ngModel. This means it can be attached to an input tag by adding this sort of
+            attribute: ngModel="whatever". In this case, it is specified with no attribute value.
+
+            When it is used with no attribute value, that means:
+            1. A one-way data binding
+            2. We want to create a FormControl on this form with the name sku (because of the name attribute on the input tag)
+-->
+
+
+<h2>Demo Form: SKU</h2>
+<form #f="ngForm" (ngSubmit)="onSubmit(f.value)">
+  <div class="container">
+    <label for="skuInput">SKU</label>
+    <input type="text" id="skuInput"
+           placeholder="SKU"
+           name="sku"
+           class="form-control"
+           ngModel>
+
+    <br />
+    <button type="submit" class="btn btn-warning">Submit</button>
+  </div>
+</form>

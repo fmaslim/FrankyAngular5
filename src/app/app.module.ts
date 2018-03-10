@@ -14,6 +14,7 @@ import { InventoryRootComponent } from './inventory-root/inventory-root.componen
 import { ProductListComponent } from './product-list/product-list.component';
 import { PriceDisplayComponent } from './price-display/price-display.component';
 import { ProductDepartmentComponent } from './product-department/product-department.component';
+import { DemoFormSkuComponent } from './demo-form-sku/demo-form-sku.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { ProductDepartmentComponent } from './product-department/product-departm
     InventoryRootComponent,
     ProductListComponent,
     PriceDisplayComponent,
-    ProductDepartmentComponent
+    ProductDepartmentComponent,
+    DemoFormSkuComponent
 ],
   imports: [
     BrowserModule, ReactiveFormsModule, FormsModule
