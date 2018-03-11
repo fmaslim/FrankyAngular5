@@ -15,6 +15,7 @@ import { ProductListComponent } from './product-list/product-list.component';
 import { PriceDisplayComponent } from './price-display/price-display.component';
 import { ProductDepartmentComponent } from './product-department/product-department.component';
 import { DemoFormSkuComponent } from './demo-form-sku/demo-form-sku.component';
+import { DemoFormSkuWithBuilderComponent } from './demo-form-sku-with-builder/demo-form-sku-with-builder.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { DemoFormSkuComponent } from './demo-form-sku/demo-form-sku.component';
     ProductListComponent,
     PriceDisplayComponent,
     ProductDepartmentComponent,
-    DemoFormSkuComponent
+    DemoFormSkuComponent,
+    DemoFormSkuWithBuilderComponent
 ],
   imports: [
     BrowserModule, ReactiveFormsModule, FormsModule

@@ -1,0 +1,54 @@
+<!--
+
+  Remember, to create a new FormGroup and FormControl implicitly, use:
+  1. ngForm
+  2. ngModel
+
+  To bind to an existing FormGroup and FormControl, use:
+  1. formGroup
+  2. formControl
+
+-->
+
+<h2>Demo Form: SKU with Builder</h2>
+<div class="container">
+  <form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm.value)">
+
+    <!-- SKU -->
+    <label for="skuInput">SKU</label>
+    <input type="text"
+            id="skuInput"
+            placeholder="SKU"
+            [formControl]="myForm.controls['sku']"
+            class="form-control">
+    <div class="ui error message" *ngIf="sku.value !== 'ABC123'">
+      SKU is required.
+    </div>
+    <div *ngIf="sku.hasError('invalidSku')">Sku must begin with 123</div>
+    <br />
+
+    <!-- FIRST NAME -->
+    <label for="firstName">First Name: </label>
+    <input type="text"
+            id="firstName"
+            placeholder="Enter a first name"
+            [formControl]="myForm.controls['firstName']"
+            class="form-control"
+            [class.red-border]="myForm.controls['firstName'].value === ''">
+    <br />
+
+    <!-- PRODUCT NAME -->
+    <label for="productName">Product Name: </label>
+    <input type="text"
+            id="productName"
+            placeholder="Enter a product name"
+            [formControl]="myForm.controls['productName']"
+            class="form-control"
+            [class.red-border]="myForm.controls['productName'].value === ''"
+            [(ngModel)]="productName"> <!-- [] and () used both indicates a 2-way data bind -->
+    <br />
+
+    <button type="submit" class="btn btn-warning">Submit</button>
+  </form>
+</div>
+
