@@ -16,6 +16,8 @@ import { PriceDisplayComponent } from './price-display/price-display.component';
 import { ProductDepartmentComponent } from './product-department/product-department.component';
 import { DemoFormSkuComponent } from './demo-form-sku/demo-form-sku.component';
 import { DemoFormSkuWithBuilderComponent } from './demo-form-sku-with-builder/demo-form-sku-with-builder.component';
+import { AnalyticsDemoComponent } from './analytics-demo/analytics-demo.component';
+import { Metric, AnalyticsImplementation, AnalyticsService } from './analytics-demo/analytics-demo.component';
 
 @NgModule({
   declarations: [
@@ -31,12 +33,26 @@ import { DemoFormSkuWithBuilderComponent } from './demo-form-sku-with-builder/de
     PriceDisplayComponent,
     ProductDepartmentComponent,
     DemoFormSkuComponent,
-    DemoFormSkuWithBuilderComponent
+    DemoFormSkuWithBuilderComponent,
+    AnalyticsDemoComponent
 ],
   imports: [
     BrowserModule, ReactiveFormsModule, FormsModule
   ],
-  providers: [],
+  providers: [{
+    provide: AnalyticsService,
+    useFactory: () => {
+      // create an implementation of that interface that will log the event
+      const loggingImplementation: AnalyticsImplementation = {
+        recordEvent: (metric: Metric): void => {
+          console.log('The metric is: ' + metric);
+        }
+      };
+
+      // Create the new AnalyticsService with the implementation
+      return new AnalyticsService(loggingImplementation);
+    }
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
