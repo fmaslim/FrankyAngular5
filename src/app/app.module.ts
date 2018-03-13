@@ -21,8 +21,7 @@ import { Metric, AnalyticsImplementation, AnalyticsService } from './analytics-d
 
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { SimpleHttpComponent } from './simple-http/simple-http.component';
-import { SearchBoxComponent } from './search-box/search-box.component';
-import { YoutubeServiceInjectables } from './search-box/search-box.component';
+import { SearchBoxComponent, YoutubeServiceInjectables } from './search-box/search-box.component';
 
 @NgModule({
   declarations: [
@@ -63,6 +62,7 @@ import { YoutubeServiceInjectables } from './search-box/search-box.component';
       return new AnalyticsService(loggingImplementation);
     }
   },
+  YoutubeServiceInjectables
 ],
   bootstrap: [AppComponent]
 })
