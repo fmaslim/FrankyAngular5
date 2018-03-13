@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/observable/fromEvent';
+import { fromEvent } from 'rxjs/observable/fromEvent';
 
 export class SearchResult {
   id: string;
@@ -83,7 +84,7 @@ export class SearchBoxComponent implements OnInit {
     // set on a component are not available in the constructor.
 
     // Convert the "keyup" event into an observable stream
-    Observable.fromEvent(this.elm.nativeElement, 'keyup');
+    fromEvent(this.elm.nativeElement, 'keyup');
   }
 
 }
