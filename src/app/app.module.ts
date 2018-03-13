@@ -19,6 +19,11 @@ import { DemoFormSkuWithBuilderComponent } from './demo-form-sku-with-builder/de
 import { AnalyticsDemoComponent } from './analytics-demo/analytics-demo.component';
 import { Metric, AnalyticsImplementation, AnalyticsService } from './analytics-demo/analytics-demo.component';
 
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { SimpleHttpComponent } from './simple-http/simple-http.component';
+import { SearchBoxComponent } from './search-box/search-box.component';
+import { YoutubeServiceInjectables } from './search-box/search-box.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,10 +39,15 @@ import { Metric, AnalyticsImplementation, AnalyticsService } from './analytics-d
     ProductDepartmentComponent,
     DemoFormSkuComponent,
     DemoFormSkuWithBuilderComponent,
-    AnalyticsDemoComponent
+    AnalyticsDemoComponent,
+    SimpleHttpComponent,
+    SearchBoxComponent
 ],
   imports: [
-    BrowserModule, ReactiveFormsModule, FormsModule
+    BrowserModule,
+    ReactiveFormsModule,
+    FormsModule,
+    HttpClientModule // The effect is that we will be able to inject HttpClient into our components
   ],
   providers: [{
     provide: AnalyticsService,
@@ -52,7 +62,8 @@ import { Metric, AnalyticsImplementation, AnalyticsService } from './analytics-d
       // Create the new AnalyticsService with the implementation
       return new AnalyticsService(loggingImplementation);
     }
-  }],
+  },
+],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
