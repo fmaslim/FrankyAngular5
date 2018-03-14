@@ -22,6 +22,8 @@ import { Metric, AnalyticsImplementation, AnalyticsService } from './analytics-d
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { SimpleHttpComponent } from './simple-http/simple-http.component';
 import { SearchBoxComponent, YoutubeServiceInjectables } from './search-box/search-box.component';
+import { SearchResultComponent } from './search-result/search-result.component';
+import { YoutubeSearchComponent } from './youtube-search/youtube-search.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,9 @@ import { SearchBoxComponent, YoutubeServiceInjectables } from './search-box/sear
     DemoFormSkuWithBuilderComponent,
     AnalyticsDemoComponent,
     SimpleHttpComponent,
-    SearchBoxComponent
+    SearchBoxComponent,
+    SearchResultComponent,
+    YoutubeSearchComponent
 ],
   imports: [
     BrowserModule,

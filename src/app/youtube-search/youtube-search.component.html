@@ -1,0 +1,16 @@
+<div class="container">
+  <h1>Youtube Search</h1>
+  <label *ngIf="loading">Loading...</label>
+
+  <div class="row">
+    <app-search-box
+      (loading)="loading=$event"
+      (results)="updateResult($event)"></app-search-box>
+  </div>
+
+  <div class="row">
+    <app-search-result
+      *ngFor="let result of results"
+      [result]="result"></app-search-result>
+  </div>
+</div>

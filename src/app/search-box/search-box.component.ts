@@ -2,8 +2,11 @@ import { Component, OnInit, Injectable, Inject, Output, EventEmitter, ElementRef
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
-import 'rxjs/observable/fromEvent';
-import { fromEvent } from 'rxjs/observable/fromEvent';
+import 'rxjs/add/operator/filter';
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/switch';
+import 'rxjs/add/observable/fromEvent';
 
 export class SearchResult {
   id: string;
@@ -84,7 +87,30 @@ export class SearchBoxComponent implements OnInit {
     // set on a component are not available in the constructor.
 
     // Convert the "keyup" event into an observable stream
-    fromEvent(this.elm.nativeElement, 'keyup');
-  }
+    Observable.fromEvent(this.elm.nativeElement, 'keyup')
+              .map((e: any) => e.target.value) // extract the value of the input
+              .filter((text: string) => text.length > 1) // filter out search term if empty
+              .debounceTime(400) // only once every 400ms
+              .do(() => this.loading.emit(true)) // enable loading
+              // search, discarding old events if new input comes in
+              .map((query: string) => this.youtube.search(query))
+              .switch()
+              .subscribe(// act on the return of the search
+                // on success
+                (results: SearchResult[]) => {
+                  this.loading.emit(false);
+                  this.results.emit(results);
+              },
+              // on error
+              (err: any) => {
+                console.log(err);
+                this.loading.emit(err);
+              },
+              // on completion
+              () => {
+                this.loading.emit(false);
+              }
+            );
 
+  }
 }
