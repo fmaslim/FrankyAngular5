@@ -28,6 +28,9 @@ import { YoutubeSearchComponent } from './youtube-search/youtube-search.componen
 import { Routes, RouterModule } from '@angular/router';
 import { RoutesComponent } from './routes/routes.component';
 
+import { LocationStrategy, HashLocationStrategy, APP_BASE_HREF } from '@angular/common';
+import { SpotifySearchComponent } from './spotify-search/spotify-search.component';
+
 // 3 main components we use to configure routing in Angular
 // a. Routes - describes the routes our application supports
 // b. RouterOutlet - a placeholder component that shows Angular where to put the content of each route
@@ -76,7 +79,8 @@ const routes: Routes = [
     SearchBoxComponent,
     SearchResultComponent,
     YoutubeSearchComponent,
-    RoutesComponent
+    RoutesComponent,
+    SpotifySearchComponent
 ],
   imports: [
     BrowserModule,
