@@ -1,0 +1,16 @@
+
+<div class="container">
+  <h1>Router Example</h1>
+  <div class="nav-link">
+    <a [routerLink]="['/home']" [routerLinkActive]="['active-link']">Home</a> |
+    <a [routerLink]="['/article']" [routerLinkActive]="['active-link']">Article</a> |
+    <a [routerLink]="['/sku']" [routerLinkActive]="['active-link']">SKU</a> |
+    <a [routerLink]="['/skubuilder']" [routerLinkActive]="['active-link']">SKU with Builder</a> |
+    <a [routerLink]="['/reddit']" [routerLinkActive]="['active-link']">Reddit</a> |
+    <a [routerLink]="['/searchbox']" [routerLinkActive]="['active-link']">Search Box</a> |
+    <a [routerLink]="['/searchresult']" [routerLinkActive]="['active-link']">Search Result</a> |
+    <a [routerLink]="['/home']" [routerLinkActive]="['active-link']">Home</a> |
+  </div>
+</div>
+
+<router-outlet></router-outlet>

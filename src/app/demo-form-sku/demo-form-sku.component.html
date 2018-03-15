@@ -18,7 +18,9 @@
             1. A one-way data binding
             2. We want to create a FormControl on this form with the name sku (because of the name attribute on the input tag)
 -->
-
+<div *ngIf="paramHasValue()">
+  <p>Parameter passed in is: {{ id }}</p>
+</div>
 
 <h2>Demo Form: SKU</h2>
 <form #f="ngForm" (ngSubmit)="onSubmit(f.value)">

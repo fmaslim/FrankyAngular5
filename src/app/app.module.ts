@@ -8,7 +8,7 @@ import { UserListComponent } from './user-list/user-list.component';
 import { RedditComponent } from './reddit/reddit.component';
 
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { ArticleComponent } from './article/article.component';
+import { ArticleComponent, Article } from './article/article.component';
 import { ProductComponent } from './product/product.component';
 import { InventoryRootComponent } from './inventory-root/inventory-root.component';
 import { ProductListComponent } from './product-list/product-list.component';
@@ -24,6 +24,37 @@ import { SimpleHttpComponent } from './simple-http/simple-http.component';
 import { SearchBoxComponent, YoutubeServiceInjectables } from './search-box/search-box.component';
 import { SearchResultComponent } from './search-result/search-result.component';
 import { YoutubeSearchComponent } from './youtube-search/youtube-search.component';
+
+import { Routes, RouterModule } from '@angular/router';
+import { RoutesComponent } from './routes/routes.component';
+
+// 3 main components we use to configure routing in Angular
+// a. Routes - describes the routes our application supports
+// b. RouterOutlet - a placeholder component that shows Angular where to put the content of each route
+// c. RouterLink - a directive used to link to routes.
+
+const routes: Routes = [
+  // basic routes
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'home', component: HelloWorldComponent },
+  { path: 'article', component: ArticleComponent },
+  { path: 'sku', component: DemoFormSkuComponent },
+  { path: 'sku/:id', component: DemoFormSkuComponent },
+  {
+    path: 'skubuilder',
+    component: DemoFormSkuWithBuilderComponent,
+    children:
+    [
+      { path: '', redirectTo: 'analytics', pathMatch: 'full' },
+      { path: 'analytics', component: AnalyticsDemoComponent },
+      { path: 'inventory', component: InventoryRootComponent }
+    ]
+  },
+  { path: 'reddit', component: RedditComponent },
+  { path: 'searchbox', component: SearchBoxComponent },
+  { path: 'searchresult', component: SearchResultComponent },
+  { path: '**', component: HelloWorldComponent },
+];
 
 @NgModule({
   declarations: [
@@ -43,14 +74,16 @@ import { YoutubeSearchComponent } from './youtube-search/youtube-search.componen
     AnalyticsDemoComponent,
     SimpleHttpComponent,
     SearchBoxComponent,
-    SearchResultComponent,
-    YoutubeSearchComponent
+    SearchResultComponent,
+    YoutubeSearchComponent,
+    RoutesComponent
 ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule // The effect is that we will be able to inject HttpClient into our components
+    HttpClientModule, // The effect is that we will be able to inject HttpClient into our components
+    RouterModule.forRoot(routes, { useHash: true })
   ],
   providers: [{
     provide: AnalyticsService,
@@ -66,7 +99,7 @@ import { YoutubeSearchComponent } from './youtube-search/youtube-search.componen
       return new AnalyticsService(loggingImplementation);
     }
   },
-  YoutubeServiceInjectables
+  YoutubeServiceInjectables,
 ],
   bootstrap: [AppComponent]
 })

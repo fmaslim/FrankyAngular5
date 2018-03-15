@@ -10,6 +10,15 @@
 
 -->
 
+<br />
+<div class="nav-link">
+  <a [routerLink]="['./analytics']" [routerLinkActive]="['active-link-child']">Analytics</a> |
+  <a [routerLink]="['./inventory']" [routerLinkActive]="['active-link-child']">Inventory</a>
+</div>
+
+<router-outlet></router-outlet>
+
+<br />
 <h2>Demo Form: SKU with Builder</h2>
 <div class="container">
   <form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm.value)">
