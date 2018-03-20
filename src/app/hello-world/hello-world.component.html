@@ -1,3 +1,25 @@
-<p>
-  hello-world works!
-</p>
+<div class="container">
+  <span>Username</span>
+  <input type="text" [(ngModel)]="username" class="form-control" placeholder="Enter a username">
+
+  <br />
+  <span>Password</span>
+  <input type="password" [(ngModel)]="password" class="form-control" placeholder="Enter a password">
+
+  <br />
+  <button type="button" (click)="submit(username, password)" class="btn btn-primary">Login</button>
+
+  <br /> <br />
+  <button type="button" (click)="isLoggedIn()" class="btn btn-info">Is Logged In?</button>
+
+  <br /> <br />
+  <button type="button" (click)="getUser()" class="btn btn-danger">Get User</button>
+
+  <br /> <br />
+  <button type="button" (click)="logout()" class="btn btn-warning">Logout</button>
+</div>
+
+<br /><br />
+<div *ngIf="loggedIn">
+  You can only see this if the user is logged in
+</div>

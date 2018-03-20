@@ -29,7 +29,11 @@ import { Routes, RouterModule } from '@angular/router';
 import { RoutesComponent } from './routes/routes.component';
 
 import { LocationStrategy, HashLocationStrategy, APP_BASE_HREF } from '@angular/common';
-import { SpotifySearchComponent } from './spotify-search/spotify-search.component';
+import { SpotifySearchComponent, SpotifyService } from './spotify-search/spotify-search.component';
+import { HttpModule } from '@angular/http';
+import { SpotifyTrackComponent } from './spotify-track/spotify-track.component';
+
+import { AuthService, LoggedInGuard } from './hello-world/hello-world.component';
 
 // 3 main components we use to configure routing in Angular
 // a. Routes - describes the routes our application supports
@@ -56,6 +60,8 @@ const routes: Routes = [
   { path: 'reddit', component: RedditComponent },
   { path: 'searchbox', component: SearchBoxComponent },
   { path: 'searchresult', component: SearchResultComponent },
+  { path: 'spotify', component: SpotifySearchComponent },
+  { path: 'youtube', component: YoutubeSearchComponent, canActivate: [ LoggedInGuard ] },
   { path: '**', component: HelloWorldComponent },
 ];
 
@@ -80,14 +86,16 @@ const routes: Routes = [
     SearchResultComponent,
     YoutubeSearchComponent,
     RoutesComponent,
-    SpotifySearchComponent
+    SpotifySearchComponent,
+    SpotifyTrackComponent
 ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule, // The effect is that we will be able to inject HttpClient into our components
-    RouterModule.forRoot(routes, { useHash: true })
+    RouterModule.forRoot(routes, { useHash: true }),
+    HttpModule
   ],
   providers: [{
     provide: AnalyticsService,
@@ -104,6 +112,9 @@ const routes: Routes = [
     }
   },
   YoutubeServiceInjectables,
+  SpotifyService,
+  AuthService,
+  LoggedInGuard
 ],
   bootstrap: [AppComponent]
 })

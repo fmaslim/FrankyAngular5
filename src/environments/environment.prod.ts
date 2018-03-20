@@ -1,3 +1,5 @@
 export const environment = {
-  production: true
+  production: true,
+  spotifyApiKey: '',
+  google: 'http://www.google.com'
 };
